@@ -30,13 +30,13 @@ conda activate TPHI
 1. Download the codes from the following link and unzip the file. Please skip it if you have done this step.
 
 ```
-wget https://cobis-fs.bme.ncku.edu.tw/TPHI/TPHI_Model.tar.gz
+wget https://cobis-fs.bme.ncku.edu.tw/TPHI/TPHI.tar.gz
 ```
 
 2. Unzip the file.
 
 ```
-tar -zxvf TPHI_Model.tar.gz
+tar -zxvf TPHI.tar.gz
 ```
 
 3. Change the working directory.
@@ -79,9 +79,8 @@ pip install -r requirements_gpu.txt
    For example: (as the input file named input_example.csv) 
    
    ```
-   NM_021242.6, 260, 432
-   XM_017029779.2, 1311, 1456
-   XM_024452381.1, 200, 373
+   XM_017015164.1,1233,1744
+   NM_001349460.2,774,1285
    ```
  Note: TPHI accepts transcript segments with length < 512 nts. If a segment with length < 512 nts is provided, it will be zero-padded into 512 nts. 
 
@@ -103,14 +102,18 @@ If the following examples are used as the input:
 python main.py -i input_example.csv -o example_results.csv
 ```
 
->** example_results.csv :**
+** example_results.csv :**
 
-   Output formats:
-   transcript_name, start, end, probability of having IRES elements
+```
+XM_017015164.1,1233,1744
+NM_001349460.2,774,1285
+```
 
-   ```
-   NM_021242, 90, 601, 0.9971961975097656
-   XM_017029779, 1128, 1639, 0.9651050567626953
-   XM_024452381, 31, 542, 0.17767062783241272
-   ```
+Output formats:
+[transcript_name$start$end] [probability of having IRES elements]
+
+```
+XM_017015164$1233$1744  0.9999996423721313
+NM_001349460$774$1285   0.4256390631198883
+```
 
