@@ -1,7 +1,8 @@
 # TPHI (Transcriptomic Prediction of Human IRESs)
 
 ## Related paper:
-Tzu-Hsien Yang*, Chin-Cheng Lee, Yu-Huai Yu, "TPHI: identifying human internal ribosome entry sites via integrating the sequence information and RNA binding protein targeting signals", 2024 (Submitted).
+Yu-Huai Yu, Zhi-Hao Jiang, Guan-Yi Zhou, and Tzu-Hsien Yang*, "TPHI: identifying human internal ribosome entry sites via integrating RNA binding protein targeting signals and sequence information
+", 2026 (Submitted).
 
 ## Prepare the Environment
 
@@ -48,13 +49,13 @@ cd TPHI_tool
 4. Download the processed RBP score datasets from the following link.
 
 ```
-wget https://cobis-fs.bme.ncku.edu.tw/TPHI/SCORES.tar.gz
+wget https://cobis-fs.bme.ncku.edu.tw/TPHI/resorces.tar.gz
 ```
 
 5. Unzip the file.
 
 ```
-tar -zxvf SCORES.tar.gz
+tar -zxvf resorces.tar.gz
 ```
 
 6. If this is the first time you use TPHI, run the following command to install necessary packages. 
@@ -79,41 +80,38 @@ pip install -r requirements_gpu.txt
    For example: (as the input file named input_example.csv) 
    
    ```
-   XM_017015164.1,1233,1744
-   NM_001349460.2,774,1285
+NM_000382.3,2479,2530
    ```
  Note: TPHI accepts transcript segments with length < 512 nts. If a segment with length < 512 nts is provided, it will be zero-padded into 512 nts. 
 
 8. Predict the probability of transcript segments to have IRES elements in them.
 
 ```
-python main.py -i <input_file> -o <output_file>
+python run_IRES.py -i <input_file> -o <output_directory>
 ```
 >**Required arguments:**
 >
 >* -i: The input file for TPHI.
 >
->* -o: The output file name of the predicted results.
+>* -o: The output directory for the predicted results.
 
 ## Output Results
 If the following examples are used as the input:
 
 ```
-python main.py -i input_example.csv -o example_results.csv
+python run_IRES.py -i ./example/input_example_1.csv -o ./example
 ```
 
-** example_results.csv :**
+** input_example.csv :**
 
 ```
-XM_017015164.1,1233,1744
-NM_001349460.2,774,1285
+NM_000382.3,2479,2530
 ```
 
 Output formats:
-[transcript_name$start$end] [probability of having IRES elements]
+[transcript_name@chromosome@start-end],[probability of having IRES elements]
 
 ```
-XM_017015164$1233$1744  0.9999996423721313
-NM_001349460$774$1285   0.4256390631198883
+NM_000382.3@chr17@2479-2530,0.800781786441803
 ```
 
