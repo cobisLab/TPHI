@@ -31,25 +31,25 @@ conda activate TPHI
 1. Download the codes from the following link and unzip the file. Please skip it if you have done this step.
 
 ```
-wget https://cobis-fs.bme.ncku.edu.tw/TPHI/TPHI_tool.tar.gz
+wget https://cobis-fs.bme.ncku.edu.tw/TPHI/TPHI.zip
 ```
 
 2. Unzip the file.
 
 ```
-tar -zxvf TPHI_tool.tar.gz
+unzip TPHI.zip
 ```
 
 3. Change the working directory.
 
 ```
-cd TPHI_tool
+cd TPHI
 ```
 
 4. Download the processed RBP score datasets from the following link.
 
 ```
-wget https://cobis-fs.bme.ncku.edu.tw/TPHI/resorces.tar.gz
+wget https://cobis-fs.bme.ncku.edu.tw/TPHI/resources.tar.gz
 ```
 
 5. Unzip the file.
